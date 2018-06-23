@@ -1,9 +1,14 @@
 fileFormatVersion: 2
 guid: e4c05756337a33344babcd369ea03fb6
 folderAsset: yes
+<<<<<<< HEAD
+DefaultImporter:
+  externalObjects: {}
+=======
 timeCreated: 1529702648
 licenseType: Free
 DefaultImporter:
+>>>>>>> refs/remotes/origin/master
   userData: 
   assetBundleName: 
   assetBundleVariant: 
