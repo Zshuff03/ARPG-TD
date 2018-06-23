@@ -1,8 +1,7 @@
-﻿namespace ARPGTD.CharacterStats{
+﻿namespace ARPGTD.CharacterStats {
     ///This Enum is used for checking what kind of modifier is used
     ///Flat being an added value and percent being a percentage multiplier
-    public enum StatModType
-    {
+    public enum StatModType {
         Flat = 100,
         PercentAdd = 200,
         PercentMult = 300,
@@ -18,8 +17,7 @@
 
         ///Creators
         ///Order is specified
-        public StatModifier(float value, StatModType type, int order, object source)
-        {
+        public StatModifier(float value, StatModType type, int order, object source) {
             Value = value;
             Type = type;
             Order = order;

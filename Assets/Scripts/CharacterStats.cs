@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace ARPGTD.CharacterStats{
+namespace ARPGTD.CharacterStats {
     /// CharacterStat is a class built to handle changes in character stats
     /// The stats themselves will be stored in the Character object
     [Serializable]
@@ -30,21 +30,18 @@ namespace ARPGTD.CharacterStats{
         public readonly ReadOnlyCollection<StatModifier> StatModifiers;
 
         /// Creator
-        public CharacterStat()
-        {
+        public CharacterStat() {
             statModifiers = new List<StatModifier>();
             StatModifiers = statModifiers.AsReadOnly();
         }
 
         ///Creator
-        public CharacterStat(float baseValue) : this()
-        {
+        public CharacterStat(float baseValue) : this() {
             BaseValue = baseValue;
         }
 
         ///Compare the order for sorting, making the multiplication happen after addition to the stats
-        protected virtual int CompareModifierOrder(StatModifier a, StatModifier b)
-        {
+        protected virtual int CompareModifierOrder(StatModifier a, StatModifier b) {
             if (a.Order < b.Order)
                 return -1;
             else if (a.Order > b.Order)
@@ -53,18 +50,15 @@ namespace ARPGTD.CharacterStats{
         }
 
         ///Add to the list
-        public virtual void AddModifier(StatModifier mod)
-        {
+        public virtual void AddModifier(StatModifier mod) {
             isDirty = true;
             statModifiers.Add(mod);
             statModifiers.Sort(CompareModifierOrder);
         }
 
         ///Remove from the list
-        public virtual bool RemoveModifier(StatModifier mod)
-        {
-            if (statModifiers.Remove(mod))
-            {
+        public virtual bool RemoveModifier(StatModifier mod) {
+            if (statModifiers.Remove(mod)) {
                 isDirty = true;
                 return true;
             }
@@ -72,14 +66,11 @@ namespace ARPGTD.CharacterStats{
             return false;
         }
 
-        public virtual bool RemoveAllModifiersFromSource(object source)
-        {
+        public virtual bool RemoveAllModifiersFromSource(object source) {
             bool didRemove = false;
 
-            for (int i = statModifiers.Count - 1; i >= 0; i--)
-            {
-                if (statModifiers[i].Source == source)
-                {
+            for (int i = statModifiers.Count - 1; i >= 0; i--) {
+                if (statModifiers[i].Source == source) {
                     isDirty = true;
                     didRemove = true;
                     statModifiers.RemoveAt(i);
@@ -90,30 +81,25 @@ namespace ARPGTD.CharacterStats{
         }
 
         ///Calculate the final value - additive values first then multiplicative
-        protected virtual float CalculateFinalValue()
-        {
+        protected virtual float CalculateFinalValue() {
             float finalValue = BaseValue;
             float sumPercentAdd = 0;
 
-            for (int i = 0; i < statModifiers.Count; i++)
-            {
+            for (int i = 0; i < statModifiers.Count; i++) {
                 StatModifier mod = statModifiers[i];
 
-                if (mod.Type == StatModType.Flat)
-                {
+                if (mod.Type == StatModType.Flat) {
                     finalValue += mod.Value;
                 }
                 else if (mod.Type == StatModType.PercentAdd) {
                     sumPercentAdd += mod.Value;
 
-                    if (i + 1 >= statModifiers.Count || statModifiers[i + 1].Type != StatModType.PercentAdd)
-                    {
+                    if (i + 1 >= statModifiers.Count || statModifiers[i + 1].Type != StatModType.PercentAdd) {
                         finalValue *= 1 + sumPercentAdd;
                         sumPercentAdd = 0;
                     }
                 }
-                else if (mod.Type == StatModType.PercentMult)
-                {
+                else if (mod.Type == StatModType.PercentMult) {
                     finalValue *= 1 + mod.Value;
                 }
             }
