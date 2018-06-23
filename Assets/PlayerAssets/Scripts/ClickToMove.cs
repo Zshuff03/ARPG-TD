@@ -8,7 +8,7 @@ public class ClickToMove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		playerNavMeshAgent = GetComponent<NavMeshAgent>();
+		playerNavMeshAgent = transform.parent.GetComponent<NavMeshAgent>();
 	}
 	
 	// Update is called once per frame
