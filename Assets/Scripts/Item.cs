@@ -1,12 +1,22 @@
-﻿using ARPGTD.CharacterStats;
+﻿using UnityEngine;
+using ARPGTD.CharacterStats;
+using UnityEngine.AI;
+using System.Collections.Generic;
 
 public class Item {
-    public void Equip(Character c) {
-        c.Strength.AddModifier(new StatModifier(10, StatModType.Flat, this));
-        c.Strength.AddModifier(new StatModifier(0.1f, StatModType.PercentMult, this));
+    protected List<int> stats;
+
+    public void Equip() {
+        GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
+        player.GetComponent<Inventory>().AddItemToInventory(this);
     }
 
-    public void Unequip(Character c) {
-        c.Strength.RemoveAllModifiersFromSource(this);
+    public void Unequip(Inventory inv) {
+        GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
+        player.GetComponent<Inventory>().RemoveItemFromInventory(this);
+    }
+
+    public List<int> getStats(){
+        return stats;
     }
 }
