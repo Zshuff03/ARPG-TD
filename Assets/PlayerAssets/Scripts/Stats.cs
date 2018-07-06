@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class Stats : MonoBehaviour {
 
-	NavMeshAgent pc;
+	NavMeshAgent character;
     public CharacterStat Strength;
     public CharacterStat Agility;
     public CharacterStat Intillect;
@@ -20,12 +20,7 @@ public class Stats : MonoBehaviour {
         Stamina.BaseValue = 10;
         moveSpeed = 100;
 
-        pc = transform.GetComponent<NavMeshAgent>();
-        pc.speed = moveSpeed;
+        character = transform.GetComponent<NavMeshAgent>();
+        character.speed = moveSpeed;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }

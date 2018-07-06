@@ -7,11 +7,13 @@ using UnityEngine;
 public class Inventory : MonoBehaviour {
 
 	public List<Item> inventory;
+    public int inventorySlots;
 
 	// Use this for initialization
 	void Start () {
+        inventorySlots = 6;
 		inventory = new List<Item>();
-		for(int i=0;i<6;i++){
+		for(int i=0;i<inventorySlots;i++){
 			inventory.Add(null);
 		}
 	}
@@ -21,8 +23,9 @@ public class Inventory : MonoBehaviour {
 		
 	}
 
+    ///Adds an item to the inventory
 	public void AddItemToInventory(Item item){
-        for(int i=0; i<6; i++){
+        for(int i=0; i<inventorySlots; i++){
             if(inventory[i] == null){
                 inventory[i] = item;
                 break;
@@ -31,8 +34,9 @@ public class Inventory : MonoBehaviour {
         calcStats(item);
     }
 
+    ///Removes an item from the inventory
     public void RemoveItemFromInventory(Item item){
-        for(int i=0; i<6; i++){
+        for(int i=0; i<inventorySlots; i++){
             if(inventory[i] == item){
                 inventory[i] = null;
                 break;
@@ -41,16 +45,18 @@ public class Inventory : MonoBehaviour {
         calcStats(item);
     }
 
+    ///Returns the item at a given position in the inventory
     public Item GetItemInInventory(int itemPos){
         return inventory[itemPos];
     }
 
+    ///Calculates and applies stats for a given item in the inventory
     public void calcStats(Item item){
         List<int> stats = new List<int>(); 
-        for(int i=0; i<6; i++){
+        for(int i=0; i<inventorySlots; i++){
             if(inventory[i] != null){
                 stats = inventory[i].getStats();
-				Stats charStats = transform.GetComponent<Stats>();
+                Stats charStats = transform.GetComponent<Stats>();
 				if(charStats.Strength.GetValue() != 0){
            			charStats.Strength.AddModifier(new StatModifier(stats[0], StatModType.Flat, 0, inventory[i]));
 				}
