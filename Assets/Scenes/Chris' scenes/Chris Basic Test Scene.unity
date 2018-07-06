@@ -588,6 +588,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1576396741588230, guid: 905e733b68a2d0145bd0c05e345e60b4, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 905e733b68a2d0145bd0c05e345e60b4, type: 2}
   m_IsPrefabParent: 0
@@ -604,7 +608,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 1895852628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 006297c1185fa9545a5c7163b0446e63, type: 3}
+  m_Script: {fileID: 11500000, guid: da8cc917ff5f7914dbb9c056c8cf0607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1895852632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1895852628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ce542e197bcc9945b8a93b593f886ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  exp: 0
+  toNextLevel: 0
+  lvl: 0
+--- !u!114 &1895852633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1895852628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 736a9074ce986224f955fe7fb305b867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Strength:
@@ -615,6 +644,3 @@ MonoBehaviour:
     BaseValue: 0
   Stamina:
     BaseValue: 0
-  exp: 0
-  toNextLevel: 0
-  lvl: 0
