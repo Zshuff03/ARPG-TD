@@ -44,13 +44,12 @@ public class HandleClicks : MonoBehaviour {
 				if(Physics.Raycast(ray, out hit, maxRaycastHitDistance, interactableMask)) {
 					Interactable interactable = hit.collider.GetComponent<Interactable>();
 					if(interactable != null) {
-						clickToMove.moveToObject(interactable);
+						SetFocus(interactable);
 					}
 				}
 				//If the Raycast hits the movement mask - keep last
-				else if(Physics.Raycast(ray, out hit, maxRaycastHitDistance, movementMask)){
+				else if(Physics.Raycast(ray, out hit, maxRaycastHitDistance, movementMask)) {
 					RemoveFocus();
-					//Vector3 destination = new Vector3(hit.point.x, 0, hit.point.z);
 					clickToMove.movePlayer(hit.point);
 				}
 			}
@@ -59,14 +58,27 @@ public class HandleClicks : MonoBehaviour {
 
 	///Sets an interactable as the players focus and moves to it
 	void SetFocus(Interactable newFocus) {
-		focus = newFocus;
-		clickToMove.movePlayer(focus.transform.position);
+		if(newFocus != focus){
+			if(focus != null)
+				focus.OnDefocused();
+
+			focus = newFocus;
+			clickToMove.moveToObject(newFocus);
+		}
+
+		newFocus.OnFocused(transform);
+		
 		//CURRENTLY BROKEN - switch to this if you want to follow the focus
 		// clickToMove.FollowTarget(newFocus);
 	}
 
 	///Removes an object from the players focus
 	void RemoveFocus() {
+		if(focus != null) {
+			if(focus != null)
+				focus.OnDefocused();
+		}
+
 		clickToMove.StopFollowingTarget();
 		focus = null;
 	}

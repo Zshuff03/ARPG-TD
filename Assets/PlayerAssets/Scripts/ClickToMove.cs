@@ -21,21 +21,19 @@ public class ClickToMove : MonoBehaviour {
 
 	///Move to an object
 	public void moveToObject(Interactable destinationObject) {
-		Debug.Log("Interacting with " + destinationObject.name);
 		playerNavMeshAgent.stoppingDistance = destinationObject.radius * stoppingDistanceMultiplier;
-		playerNavMeshAgent.SetDestination(destinationObject.transform.position);
+		target = destinationObject.interactionTransform;
+		playerNavMeshAgent.SetDestination(target.position);
 	}
 	///Follow the target
 	public void FollowTarget(Interactable newTarget) {
-		Debug.Log("Following target");
 		playerNavMeshAgent.stoppingDistance = newTarget.radius * stoppingDistanceMultiplier;		
-		target = newTarget.transform;
+		target = newTarget.interactionTransform;
 		StartCoroutine(Follow());
 	}
 
 	///Coroutine for following in case something is moving
 	public IEnumerator Follow() {
-		Debug.Log("Coroutine running");
 		if(target != null){
 			playerNavMeshAgent.SetDestination(target.position);
 			yield return true;
