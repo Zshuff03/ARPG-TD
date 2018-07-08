@@ -66,6 +66,7 @@ namespace ARPGTD.CharacterStats {
             return false;
         }
 
+        ///removes every modifier
         public virtual bool RemoveAllModifiersFromSource(object source) {
             bool didRemove = false;
 
@@ -105,6 +106,11 @@ namespace ARPGTD.CharacterStats {
             }
 
             return (float)Math.Round(finalValue, 4);
+        }
+
+        ///returns the value of the stat
+        public float GetValue() {
+            return Value;
         }
     }
 }
