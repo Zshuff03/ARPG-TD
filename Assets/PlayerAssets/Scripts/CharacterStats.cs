@@ -109,7 +109,7 @@ namespace ARPGTD.CharacterStats {
         }
 
         ///returns the value of the stat
-        public float GetValue(){
+        public float GetValue() {
             return Value;
         }
     }
