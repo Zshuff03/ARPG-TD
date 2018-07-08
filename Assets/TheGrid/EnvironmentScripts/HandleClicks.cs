@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HandleClicks : MonoBehaviour {
-	public GameObject player;
-	private GameObject playerScripts;
-	public GameObject PauseCanvas;
-	public Interactable focus;
-	public LayerMask movementMask;
-	public LayerMask interactableMask;
+	public GameObject player;												//The player
+	private GameObject playerScripts;										//The object holding the scripts for the player
+	public GameObject PauseCanvas;											//The pause menu's canvas
+	public Interactable focus;												//The interactable that the player is looking to interact with
+	public LayerMask movementMask;											//LayerMask for movable terrain
+	public LayerMask interactableMask;										//LayerMask for Interactables
 	
-	ClickToMove clickToMove;
-	Camera cam;
-	private float maxRaycastHitDistance;
+	ClickToMove clickToMove;												//The ClickToMove script
+	Camera cam;																//Main Camera
+	private float maxRaycastHitDistance;									//Max distance a Raycast will hit
 	
 	void Start () {
 		cam = Camera.main;
@@ -67,12 +67,9 @@ public class HandleClicks : MonoBehaviour {
 		}
 
 		newFocus.OnFocused(transform);
-		
-		//CURRENTLY BROKEN - switch to this if you want to follow the focus
-		// clickToMove.FollowTarget(newFocus);
 	}
 
-	///Removes an object from the players focus
+	///Removes an object from the players focus and stops moving towards it
 	void RemoveFocus() {
 		if(focus != null) {
 			if(focus != null)
