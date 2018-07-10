@@ -7,7 +7,7 @@ public class Interactable : MonoBehaviour {
 	public Transform interactionTransform;							//the transform of the interaction object
 																	//For example - a chest will have an interactable empty out in front of the model
 	bool isFocus = false;											//If the object is the focus of the player's action
-	Transform player;												//The player interacting with the object
+	protected Transform player;										//The player interacting with the object
 	bool hasInteracted = false;										//To prevent continual interactions
 
 	void Update() {
@@ -20,7 +20,7 @@ public class Interactable : MonoBehaviour {
 		}
 	}
 
-	///Set this to determine what is done with the object during interaction
+	///This function determines what is done with the object during interaction
 	public virtual void Interact() {
 		//Overwrite this object
 		Debug.Log("Interacting with " + this.name);
