@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using ARPGTD.CharacterStats;
 using UnityEngine.AI;
 using System.Collections.Generic;
 

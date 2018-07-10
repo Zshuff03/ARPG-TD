@@ -879,6 +879,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySlots: 0
+--- !u!114 &1895852630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1895852628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50837f76adcc1874e8bd9ce19f53ce03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  damage:
+    baseValue: 0
+  armor:
+    baseValue: 0
 --- !u!114 &1895852632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,22 +909,3 @@ MonoBehaviour:
   currentExperience: 0
   toNextLevel: 0
   charLevel: 0
---- !u!114 &1895852633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1895852628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 736a9074ce986224f955fe7fb305b867, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Strength:
-    BaseValue: 0
-  Agility:
-    BaseValue: 0
-  Intillect:
-    BaseValue: 0
-  Stamina:
-    BaseValue: 0
