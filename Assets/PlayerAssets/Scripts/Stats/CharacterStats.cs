@@ -7,8 +7,8 @@ public class CharacterStats : MonoBehaviour {
  		public int maxHealth = 100;
         public int currentHealth { get; private set;}
 
-        public Stat damage;
-        public Stat armor;
+        public Stat damage = new Stat(0);
+        public Stat armor = new Stat(0);
 
         void Awake() {
             currentHealth = maxHealth;
