@@ -5,6 +5,22 @@ using UnityEngine;
 [System.Serializable]
 public class Inventory : MonoBehaviour {
 
+    #region Singleton
+        public static Inventory instance;
+
+        void Awake() {
+            if(instance != null) {
+                Debug.LogWarning("More than one instance of Inventory found!");
+                return;
+            }
+
+            instance = this;
+        }
+    #endregion
+
+    public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallBack;
+
 	public List<Item> inventory;
     public int inventorySlots;
 
@@ -23,13 +39,29 @@ public class Inventory : MonoBehaviour {
 	}
 
     ///Adds an item to the inventory
-	public void AddItemToInventory(Item item) {
+	public bool AddItemToInventory(Item item) {
+        int itemsInInventory = 0;
         for(int i=0; i<inventorySlots; i++) {
+            //See if slot is empty
             if(inventory[i] == null) {
                 inventory[i] = item;
-                break;
+
+                if(onItemChangedCallBack != null) {
+                    onItemChangedCallBack.Invoke();
+                }
+                    
+                return true;
+            } else {
+                //if slot is full
+                itemsInInventory += 1;
+                if(itemsInInventory >= inventorySlots) {
+                    Debug.Log("Inventory is full.");
+                    break;
+                }
             }
         }
+        itemsInInventory = 0;
+        return false;
         // calcStats(item);
     }
 
@@ -38,6 +70,10 @@ public class Inventory : MonoBehaviour {
         for(int i=0; i<inventorySlots; i++) {
             if(inventory[i] == item) {
                 inventory[i] = null;
+
+                if(onItemChangedCallBack != null)
+                    onItemChangedCallBack.Invoke();
+
                 break;
             }
         }
