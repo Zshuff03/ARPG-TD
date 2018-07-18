@@ -12,15 +12,16 @@ private int lengthInTiles = 1;
 
 public bool buildable;
 public float rawHeight;
+public bool normalized = false;
 public int planeLevel;
 public int xLoc;
-public int yLoc;
+public int zLoc;
 
 public GameObject objectContained;
 
 	void setObject(GameObject objectToBuild) {
 		objectContained = objectToBuild;
-		Vector3Int pos = new Vector3Int(xLoc - (width/2), 0, yLoc - (length/2));
+		Vector3Int pos = new Vector3Int(xLoc - (width/2), 0, zLoc - (length/2));
 		GameObject.Instantiate(objectToBuild, pos, Quaternion.identity);
 	}
 
@@ -36,6 +37,7 @@ public GameObject objectContained;
 	}
 	
 	public void setOutterWall() {
+		normalized = true;
 		resetTransform();
 		planeLevel = 4;
 		setTransformHeight();
@@ -46,10 +48,24 @@ public GameObject objectContained;
 		transform.localScale = new Vector3(currentLocal.x , 1, currentLocal.z);
 	}
 
+	public void normalizeToPlane(int plane) {
+		planeLevel = plane;
+		resetTransform();
+		setTransformHeight();
+	}
+	public void setColor(Color color) {
+		// for debuging purposes
+		GetComponent<Renderer>().material.color = color;
+	}
+
 	void setTransformHeight() {
 		Vector3 newScale = transform.localScale;
 		newScale.y = planeLevel * 4 + newScale.y;
 		transform.localScale = newScale;
 		transform.position = new Vector3(transform.position.x, newScale.y / 2, transform.position.z);
+
+		// for debuging purposes
+		float color = (float)(planeLevel * 0.5);
+		GetComponent<Renderer>().material.color = new Color(color,1,1);
 	}
 }
