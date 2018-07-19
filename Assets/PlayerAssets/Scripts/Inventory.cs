@@ -28,18 +28,13 @@ public class Inventory : MonoBehaviour {
 	void Start () {
         inventorySlots = 6;
 		inventory = new List<Item>();
-		for(int i=0;i<inventorySlots;i++) {
+		for(int i = 0; i < inventorySlots; i++) {
 			inventory.Add(null);
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     ///Adds an item to the inventory
-	public bool AddItemToInventory(Item item) {
+	public bool Add(Item item) {
         int itemsInInventory = 0;
         for(int i=0; i<inventorySlots; i++) {
             //See if slot is empty
