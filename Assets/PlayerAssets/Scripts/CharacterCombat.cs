@@ -12,7 +12,7 @@ public class CharacterCombat : MonoBehaviour {
 
 	public float attackDelay = .6f;								//Delay for the attack to match up with animations
 
-	public event System.Action OnAttack;						//Callback Method for attacks
+	public event System.Action OnAttack;						//Callback Method for attacks - add animators and the like i think?
 
 	void Start() {
 		//Get stats for this character
@@ -29,9 +29,9 @@ public class CharacterCombat : MonoBehaviour {
 		if(attackCooldown <= 0f){
 			StartCoroutine(DoDamage(targetStats, attackDelay));
 
-			if (OnAttack != null){
-				attackCooldown = 1f / attackSpeed;
-			}
+			//if (OnAttack != null){
+			attackCooldown = 1f / attackSpeed;
+			//}
 		}
 	}
 
