@@ -21,7 +21,7 @@ public class CharacterStats : MonoBehaviour {
         }
 
         public void TakeDamage(int damage) {
-            damage -= armor.GetValue();
+            damage -= armor.CalcValue();
             damage = Mathf.Clamp(damage, 0, int.MaxValue);
             
             currentHealth -= damage;

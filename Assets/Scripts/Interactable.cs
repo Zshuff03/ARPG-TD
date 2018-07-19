@@ -23,7 +23,7 @@ public class Interactable : MonoBehaviour {
 	///This function determines what is done with the object during interaction
 	public virtual void Interact() {
 		//Overwrite this object
-		Debug.Log("Interacting with " + this.name);
+		//Debug.Log("Interacting with " + this.name);
 	}
 
 	///When the interactable is focused by the player

@@ -28,4 +28,10 @@ public class PlayerStats : CharacterStats {
 	// 	}
 	// }
 
+	//Health = 0. RIP
+	public override void Die(){
+		base.Die();
+		PlayerManager.instance.KillPlayer();
+	}
+
 }
