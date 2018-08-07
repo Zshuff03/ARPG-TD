@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class HandleClicks : MonoBehaviour {
 	public GameObject player;												//The player
@@ -24,6 +25,11 @@ public class HandleClicks : MonoBehaviour {
 	void Update () {
 		//If the game is not paused
 		if(!PauseCanvas.activeInHierarchy) {
+
+			//Check if over UI
+			if(EventSystem.current.IsPointerOverGameObject())
+				return;
+				
 			//Left Click
 			if (Input.GetMouseButtonDown(0)) {
 				Ray ray = cam.ScreenPointToRay(Input.mousePosition);

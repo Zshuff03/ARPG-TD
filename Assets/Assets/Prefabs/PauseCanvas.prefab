@@ -255,7 +255,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224589194178503164}
-  - component: {fileID: 114382268339953584}
+  - component: {fileID: 114126676748022796}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -496,6 +496,17 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &114126676748022796
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626123276926676}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e29af994302d7544aa25c830042d7b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114143963523309914
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -769,17 +780,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &114382268339953584
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1626123276926676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6faad6b7ec71f634d9ee88bd5b119836, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114421141365917978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1045,7 +1045,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114382268339953584}
+      - m_Target: {fileID: 114126676748022796}
         m_MethodName: quit
         m_Mode: 1
         m_Arguments:
@@ -1097,8 +1097,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114382268339953584}
-        m_MethodName: resume
+      - m_Target: {fileID: 0}
+        m_MethodName: Resume
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
